@@ -1,0 +1,22 @@
+<div class="container">
+  <h1><%= @review.restaurant.name %> - Add a review</h1>
+
+  <div class="form-group">
+    <%= simple_form_for [@review.restaurant, @review] do |f| %>
+      <% if @review.errors.any? %>
+        <div class="errors-container">
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.input :rating, class: "form-control" %>
+      <%= f.input :content, class: "form-control" %>
+
+      <%= f.submit "Add review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
